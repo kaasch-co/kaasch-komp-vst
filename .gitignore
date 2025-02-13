@@ -6,3 +6,4 @@ compile_commands.json
 Makefile
 make_helpers/
 build/
+pre_build/
