@@ -2,3 +2,7 @@ Builds/
 .ccls-cache/
 .ccls
 compile_commands.json
+*.jucer
+Makefile
+make_helpers/
+build/
