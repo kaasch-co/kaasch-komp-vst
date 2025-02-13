@@ -7,3 +7,5 @@ Makefile
 make_helpers/
 build/
 pre_build/
+.cache/
+.cache
