@@ -11,20 +11,20 @@
 #include "PluginEditor.h"
 
 //==============================================================================
-VstpluginbaseAudioProcessorEditor::VstpluginbaseAudioProcessorEditor (VstpluginbaseAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p)
+VstpluginbaseAudioProcessorEditor::VstpluginbaseAudioProcessorEditor(VstpluginbaseAudioProcessor&
+		p)
+    : AudioProcessorEditor(&p), audioProcessor(p)
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    setSize (400, 300);
+    setSize(400, 300);
 
 	volumeSlider.setSliderStyle(juce::Slider::LinearBarVertical);
-	volumeSlider.setRange(0u, 127u, 1u);
-	volumeSlider.setTextBoxStyle(juce::Slider::NoTextBox, false, 90, 0);
+	volumeSlider.setRange(-40.f, 6.f, 0.1f);
+	volumeSlider.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxAbove, false, 90, 0);
 	volumeSlider.setPopupDisplayEnabled(true, false, this);
-	volumeSlider.setTextValueSuffix("Volume");
-	volumeSlider.setValue(0u);
-
+	volumeSlider.setTextValueSuffix(" dB");
+	volumeSlider.setValue(0.f);
 	addAndMakeVisible(&volumeSlider);
 }
 
@@ -33,12 +33,12 @@ VstpluginbaseAudioProcessorEditor::~VstpluginbaseAudioProcessorEditor()
 }
 
 //==============================================================================
-void VstpluginbaseAudioProcessorEditor::paint (juce::Graphics& g)
+void VstpluginbaseAudioProcessorEditor::paint(juce::Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll(getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
+    g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
     g.setColour(juce::Colours::white);
-    g.setFont(juce::FontOptions (15.0f));
+    g.setFont(juce::FontOptions(15.0f));
     g.drawFittedText("Input test", getLocalBounds(), juce::Justification::topLeft, 1);
 }
 
