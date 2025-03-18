@@ -19,6 +19,7 @@ VstpluginbaseAudioProcessorEditor::VstpluginbaseAudioProcessorEditor(Vstpluginba
     // editor's size to whatever you need it to be.
     setSize(400, 300);
 
+	// editor volume slider 
 	volumeSlider.setSliderStyle(juce::Slider::LinearBarVertical);
 	volumeSlider.setRange(-40.f, 6.f, 0.1f);
 	volumeSlider.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxAbove, false, 90, 0);
@@ -38,8 +39,8 @@ void VstpluginbaseAudioProcessorEditor::paint(juce::Graphics& g)
     // (Our component is opaque, so we must completely fill the background with a solid colour)
     g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
     g.setColour(juce::Colours::white);
-    g.setFont(juce::FontOptions(15.0f));
-    g.drawFittedText("Input test", getLocalBounds(), juce::Justification::topLeft, 1);
+    g.setFont(15.0f);
+    g.drawFittedText("Passthrough gain test", getLocalBounds(), juce::Justification::topLeft, 1);
 }
 
 void VstpluginbaseAudioProcessorEditor::resized()
