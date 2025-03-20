@@ -33,7 +33,11 @@ private:
 
 	// controls for compressor
 	juce::Slider inputSlider;
+	juce::Slider attackSlider;
+	juce::Slider releaseSlider;
+	juce::Slider thresholdSlider;
 	juce::Slider gainSlider;
+	
 
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (VstpluginbaseAudioProcessorEditor)
