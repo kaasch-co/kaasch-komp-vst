@@ -12,21 +12,12 @@ enum UtilResult {
 	ERR
 };
 
-UtilResult setupGainSlider(juce::AudioProcessorEditor *editor, juce::Slider *slider);
-UtilResult setupTimeSlider(juce::AudioProcessorEditor *editor, juce::Slider *slider);
-
 class GainSlider : public juce::Slider {
 	public:
-		GainSlider(juce::AudioProcessorEditor* editor) {
-			this->setSliderStyle(juce::Slider::LinearBarVertical);
-			this->setRange(range.FLOOR, range.CEIL, range.STEP);
-			this->setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxAbove, false, 90, 0);
-			this->setTextValueSuffix(" dB");
-			this->setPopupDisplayEnabled(true, false, editor);
-		};
-
-		~GainSlider() {};
-
+		GainSlider(juce::AudioProcessorEditor*);
+		~GainSlider();
 	private:
-		UtilRange range {-40.f, 6.f, 0.1f};
+		static const UtilRange Range;
+		UtilResult setupGainSlider(juce::AudioProcessorEditor*);
+		UtilResult setupTimeSlider(juce::AudioProcessorEditor*);
 };
