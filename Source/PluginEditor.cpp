@@ -9,6 +9,7 @@
 #include "PluginProcessor.h"
 #include "juce_gui_basics/juce_gui_basics.h"
 #include "PluginEditor.h"
+#include "EditorUtils.h"
 
 //==============================================================================
 VstpluginbaseAudioProcessorEditor::VstpluginbaseAudioProcessorEditor(VstpluginbaseAudioProcessor&
@@ -27,6 +28,9 @@ VstpluginbaseAudioProcessorEditor::VstpluginbaseAudioProcessorEditor(Vstpluginba
 	volumeSlider.setTextValueSuffix(" dB");
 	volumeSlider.setValue(0.f);
 	addAndMakeVisible(&volumeSlider);
+
+	addAndMakeVisible(testSlider);
+
 
 }
 

@@ -10,6 +10,7 @@
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
+#include "EditorUtils.h"
 
 //==============================================================================
 /**
@@ -37,6 +38,8 @@ private:
 	juce::Slider releaseTimeSlider;
 	juce::Slider thresholdSlider;
 	juce::Slider outputGainSlider;
+
+	GainSlider testSlider{this};
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (VstpluginbaseAudioProcessorEditor)
 };
