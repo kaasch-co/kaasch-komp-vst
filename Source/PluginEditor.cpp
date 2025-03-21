@@ -27,6 +27,7 @@ VstpluginbaseAudioProcessorEditor::VstpluginbaseAudioProcessorEditor(Vstpluginba
 	volumeSlider.setTextValueSuffix(" dB");
 	volumeSlider.setValue(0.f);
 	addAndMakeVisible(&volumeSlider);
+
 }
 
 VstpluginbaseAudioProcessorEditor::~VstpluginbaseAudioProcessorEditor()
