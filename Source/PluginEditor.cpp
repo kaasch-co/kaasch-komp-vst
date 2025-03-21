@@ -9,7 +9,6 @@
 #include "PluginProcessor.h"
 #include "juce_gui_basics/juce_gui_basics.h"
 #include "PluginEditor.h"
-#include "EditorUtils.h"
 
 //==============================================================================
 VstpluginbaseAudioProcessorEditor::VstpluginbaseAudioProcessorEditor(VstpluginbaseAudioProcessor&
