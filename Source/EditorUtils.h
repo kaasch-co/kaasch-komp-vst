@@ -1,5 +1,5 @@
 #pragma once
-#include "juce_audio_processors/juce_audio_processors.h"
+#include <JuceHeader.h>
 
 typedef struct _UtilRange {
 	const float FLOOR;

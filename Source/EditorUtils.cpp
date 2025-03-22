@@ -1,4 +1,4 @@
-#include "juce_audio_processors/juce_audio_processors.h"
+#include <JuceHeader.h>
 #include "EditorUtils.h"
 
 // Decibels
@@ -16,6 +16,8 @@ GainSlider::~GainSlider() {};
 TimeSlider::TimeSlider(juce::AudioProcessorEditor* editor) : range(TimeRange) {
 	setupTimeSlider(editor);
 }
+
+TimeSlider::~TimeSlider() {};
 
 UtilResult GainSlider::setupGainSlider(juce::AudioProcessorEditor *editor) {
 	this->setSliderStyle(juce::Slider::LinearBarVertical);
