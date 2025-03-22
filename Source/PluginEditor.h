@@ -29,17 +29,20 @@ private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     VstpluginbaseAudioProcessor& audioProcessor;
-	// to be removed
-	juce::Slider volumeSlider;
-
-	// controls for compressor
+	/* controls for compressor
 	juce::Slider inputGainSlider;
 	juce::Slider attackTimeSlider;
 	juce::Slider releaseTimeSlider;
 	juce::Slider thresholdSlider;
 	juce::Slider outputGainSlider;
+	*/
 
-	GainSlider testSlider{this};
+	GainSlider inputGainSlider{this};
+	GainSlider thresholdSlider{this};
+	GainSlider outputGainSlider{this};
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (VstpluginbaseAudioProcessorEditor)
+	TimeSlider attackTimeSlider{this};
+	TimeSlider releaseTimeSlider{this};
+
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (VstpluginbaseAudioProcessorEditor)
 };

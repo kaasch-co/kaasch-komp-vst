@@ -19,5 +19,14 @@ class GainSlider : public juce::Slider {
 	private:
 		const UtilRange range;
 		UtilResult setupGainSlider(juce::AudioProcessorEditor*);
+
+};
+
+class TimeSlider : public juce::Slider {
+	public:
+		TimeSlider(juce::AudioProcessorEditor*);
+		~TimeSlider();
+	private:
+		const UtilRange range;
 		UtilResult setupTimeSlider(juce::AudioProcessorEditor*);
 };

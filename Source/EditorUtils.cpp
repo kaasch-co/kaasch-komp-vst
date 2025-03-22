@@ -13,6 +13,10 @@ GainSlider::GainSlider(juce::AudioProcessorEditor* editor) : range(GainRange) {
 
 GainSlider::~GainSlider() {};
 
+TimeSlider::TimeSlider(juce::AudioProcessorEditor* editor) : range(TimeRange) {
+	setupTimeSlider(editor);
+}
+
 UtilResult GainSlider::setupGainSlider(juce::AudioProcessorEditor *editor) {
 	this->setSliderStyle(juce::Slider::LinearBarVertical);
 	this->setRange(range.FLOOR, range.CEIL, range.STEP);
@@ -22,7 +26,7 @@ UtilResult GainSlider::setupGainSlider(juce::AudioProcessorEditor *editor) {
 	return OK;
 }
 
-UtilResult GainSlider::setupTimeSlider(juce::AudioProcessorEditor *editor) {
+UtilResult TimeSlider::setupTimeSlider(juce::AudioProcessorEditor *editor) {
 	this->setSliderStyle(juce::Slider::LinearBarVertical);
 	this->setRange(range.FLOOR, range.CEIL, range.STEP);
 	this->setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxAbove, false, 90, 0);

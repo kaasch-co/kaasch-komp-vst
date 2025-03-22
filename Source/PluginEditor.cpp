@@ -18,19 +18,13 @@ VstpluginbaseAudioProcessorEditor::VstpluginbaseAudioProcessorEditor(Vstpluginba
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     setSize(400, 300);
-
-	// editor volume slider 
-	volumeSlider.setSliderStyle(juce::Slider::LinearBarVertical);
-	volumeSlider.setRange(-40.f, 6.f, 0.1f);
-	volumeSlider.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxAbove, false, 90, 0);
-	volumeSlider.setPopupDisplayEnabled(true, false, this);
-	volumeSlider.setTextValueSuffix(" dB");
-	volumeSlider.setValue(0.f);
-	addAndMakeVisible(&volumeSlider);
-
-	addAndMakeVisible(testSlider);
-
-
+	
+	// Editor controls
+	addAndMakeVisible(inputGainSlider);
+	addAndMakeVisible(thresholdSlider);
+	addAndMakeVisible(outputGainSlider);
+	addAndMakeVisible(attackTimeSlider);
+	addAndMakeVisible(releaseTimeSlider); 
 }
 
 VstpluginbaseAudioProcessorEditor::~VstpluginbaseAudioProcessorEditor()
@@ -52,5 +46,10 @@ void VstpluginbaseAudioProcessorEditor::resized()
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
 	
-	volumeSlider.setBounds(40, 30, 20, getHeight() - 60);
+	inputGainSlider.setBounds(40, 30, 20, getHeight() - 60);
+	thresholdSlider.setBounds(120, 30, 20, getHeight() - 60);
+	outputGainSlider.setBounds(getWidth() - 80, 30, 20, getHeight() - 60);
+	attackTimeSlider.setBounds(80, 30, 20, getHeight() - 60);
+	releaseTimeSlider.setBounds(getWidth() - 120, 30, 20, getHeight() - 60);
+
 }
