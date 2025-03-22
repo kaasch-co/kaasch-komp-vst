@@ -19,12 +19,21 @@ VstpluginbaseAudioProcessorEditor::VstpluginbaseAudioProcessorEditor(Vstpluginba
     // editor's size to whatever you need it to be.
     setSize(400, 300);
 	
-	// Editor controls
+	// Set default values for editor controls
+	inputGainSlider.setValue(0.f);
+	thresholdSlider.setValue(0.f);
+	outputGainSlider.setValue(0.f);
+
+	attackTimeSlider.setValue(20.f);
+	releaseTimeSlider.setValue(80.f);
+
+	// make editor controls visible
 	addAndMakeVisible(inputGainSlider);
 	addAndMakeVisible(thresholdSlider);
 	addAndMakeVisible(outputGainSlider);
 	addAndMakeVisible(attackTimeSlider);
 	addAndMakeVisible(releaseTimeSlider); 
+
 }
 
 VstpluginbaseAudioProcessorEditor::~VstpluginbaseAudioProcessorEditor()
