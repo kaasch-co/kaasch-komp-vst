@@ -46,8 +46,8 @@ void VstpluginbaseAudioProcessorEditor::paint(juce::Graphics& g)
     // (Our component is opaque, so we must completely fill the background with a solid colour)
     g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
     g.setColour(juce::Colours::white);
-    g.setFont(15.0f);
-    g.drawFittedText("Passthrough gain test", getLocalBounds(), juce::Justification::topLeft, 1);
+    g.setFont(12.0f);
+    g.drawFittedText("Kaasch compressor", getLocalBounds(), juce::Justification::centredTop, 1);
 }
 
 void VstpluginbaseAudioProcessorEditor::resized()
@@ -56,10 +56,12 @@ void VstpluginbaseAudioProcessorEditor::resized()
     // subcomponents in your editor..
 	const int HEIGHT = getHeight();
 	const int WIDTH = getWidth();
-	inputGainSlider.setBounds(40, 30, 20, HEIGHT - 60);
-	thresholdSlider.setBounds(120, 30, 20, HEIGHT - 60);
-	outputGainSlider.setBounds(WIDTH - 80, 30, 20, HEIGHT - 60);
-	attackTimeSlider.setBounds(80, 30, 20, HEIGHT - 60);
-	releaseTimeSlider.setBounds(WIDTH - 120, 30, 20, HEIGHT - 60);
+	const int SLIDERWIDTH = 40;
+	const int PADDING = 30;
+	inputGainSlider.setBounds(PADDING, PADDING, SLIDERWIDTH, HEIGHT - (PADDING << 1));
+	thresholdSlider.setBounds(120, PADDING, SLIDERWIDTH, HEIGHT - (PADDING << 1));
+	outputGainSlider.setBounds(WIDTH - 80, PADDING, SLIDERWIDTH, HEIGHT - (PADDING << 1));
+	attackTimeSlider.setBounds(80, PADDING, SLIDERWIDTH, HEIGHT - (PADDING << 1));
+	releaseTimeSlider.setBounds(WIDTH - 120, PADDING, SLIDERWIDTH, HEIGHT - (PADDING << 1));
 
 }
