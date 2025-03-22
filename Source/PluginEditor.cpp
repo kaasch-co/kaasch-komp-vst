@@ -54,14 +54,17 @@ void VstpluginbaseAudioProcessorEditor::resized()
 {
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
+	
 	const int HEIGHT = getHeight();
 	const int WIDTH = getWidth();
 	const int SLIDERWIDTH = 40;
 	const int PADDING = 30;
+
+	// bitshift by 1 as quick 2x multiplier
 	inputGainSlider.setBounds(PADDING, PADDING, SLIDERWIDTH, HEIGHT - (PADDING << 1));
 	thresholdSlider.setBounds(120, PADDING, SLIDERWIDTH, HEIGHT - (PADDING << 1));
-	outputGainSlider.setBounds(WIDTH - 80, PADDING, SLIDERWIDTH, HEIGHT - (PADDING << 1));
+	outputGainSlider.setBounds(WIDTH - SLIDERWIDTH - PADDING, PADDING, SLIDERWIDTH, HEIGHT - (PADDING << 1));
 	attackTimeSlider.setBounds(80, PADDING, SLIDERWIDTH, HEIGHT - (PADDING << 1));
-	releaseTimeSlider.setBounds(WIDTH - 120, PADDING, SLIDERWIDTH, HEIGHT - (PADDING << 1));
+	releaseTimeSlider.setBounds(WIDTH - ((SLIDERWIDTH + PADDING) << 1), PADDING, SLIDERWIDTH, HEIGHT - (PADDING << 1));
 
 }
