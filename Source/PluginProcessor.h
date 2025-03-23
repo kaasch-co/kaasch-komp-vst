@@ -16,6 +16,8 @@
 class VstpluginbaseAudioProcessor  : public juce::AudioProcessor
 {
 public:
+
+	float inputGainValue;
     //==============================================================================
     VstpluginbaseAudioProcessor();
     ~VstpluginbaseAudioProcessor() override;

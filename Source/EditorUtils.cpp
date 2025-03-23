@@ -1,6 +1,5 @@
 #include <JuceHeader.h>
 #include "EditorUtils.h"
-#include "juce_graphics/juce_graphics.h"
 
 // Decibels
 const UtilRange GainRange {-40.f, 6.f, 0.1f};

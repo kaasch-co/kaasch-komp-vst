@@ -16,6 +16,7 @@ VstpluginbaseAudioProcessorEditor::VstpluginbaseAudioProcessorEditor(Vstpluginba
 		p)
     : AudioProcessorEditor(&p), audioProcessor(p)
 {
+
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     setSize(600, 300);
@@ -27,6 +28,8 @@ VstpluginbaseAudioProcessorEditor::VstpluginbaseAudioProcessorEditor(Vstpluginba
 
 	attackTimeSlider.setValue(20.f);
 	releaseTimeSlider.setValue(80.f);
+
+	inputGainSlider.addListener(this);
 
 	// make editor controls visible
 	addAndMakeVisible(inputGainSlider);
@@ -83,4 +86,8 @@ void VstpluginbaseAudioProcessorEditor::resized() {
 	outputGainSlider.setBounds(W - W_SLIDER - PAD, PAD << 1, W_SLIDER, H - 3 * PAD);
 	attackTimeSlider.setBounds(PAD * 2 + W_SLIDER, PAD << 1, W_SLIDER, H - 3 * PAD);
 	releaseTimeSlider.setBounds(W - ((W_SLIDER + PAD) << 1), PAD << 1, W_SLIDER, H - 3 * PAD);
+}
+
+void VstpluginbaseAudioProcessorEditor::sliderValueChanged(juce::Slider* slider) {
+	audioProcessor.inputGainValue = inputGainSlider.getValue();
 }
