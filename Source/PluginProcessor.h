@@ -17,7 +17,13 @@ class VstpluginbaseAudioProcessor  : public juce::AudioProcessor
 {
 public:
 
+	// Values from the editor will be converted and written to the following vars
 	float inputGainValue;
+	float thresholdValue;
+	float outputGainValue;
+	float attackTimeValue;
+	float releaseTimeValue;
+
     //==============================================================================
     VstpluginbaseAudioProcessor();
     ~VstpluginbaseAudioProcessor() override;

@@ -7,6 +7,7 @@
 */
 
 #include "PluginProcessor.h"
+#include "juce_core/juce_core.h"
 #include "juce_graphics/juce_graphics.h"
 #include "juce_gui_basics/juce_gui_basics.h"
 #include "PluginEditor.h"
@@ -25,12 +26,15 @@ VstpluginbaseAudioProcessorEditor::VstpluginbaseAudioProcessorEditor(Vstpluginba
 	inputGainSlider.setValue(0.f);
 	thresholdSlider.setValue(0.f);
 	outputGainSlider.setValue(0.f);
-
 	attackTimeSlider.setValue(20.f);
 	releaseTimeSlider.setValue(80.f);
 
 	// add listeners to the controls
 	inputGainSlider.addListener(this);
+	thresholdSlider.addListener(this);
+	outputGainSlider.addListener(this);
+	attackTimeSlider.addListener(this);
+	releaseTimeSlider.addListener(this);
 
 	// make editor controls visible
 	addAndMakeVisible(inputGainSlider);
@@ -90,7 +94,11 @@ void VstpluginbaseAudioProcessorEditor::resized() {
 }
 
 void VstpluginbaseAudioProcessorEditor::sliderValueChanged(juce::Slider* slider) {
-	// Convert between physical and digital units, so the audioprocessor only
+	// Convert between physical and digital units happen here, so the audioprocessor only
 	// implements the correct unit
-	audioProcessor.inputGainValue = inputGainSlider.dbFStoFloat();
+
+	// If statements to only update the values of sliders that have changed
+	if (slider == &inputGainSlider) {
+		audioProcessor.inputGainValue = inputGainSlider.dbFStoFloat();
+	}
 }

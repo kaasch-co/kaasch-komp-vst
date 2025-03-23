@@ -95,6 +95,8 @@ void VstpluginbaseAudioProcessor::prepareToPlay (double sampleRate, int samplesP
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
+	
+	inputGainValue = 0.0f;
 }
 
 void VstpluginbaseAudioProcessor::releaseResources()
