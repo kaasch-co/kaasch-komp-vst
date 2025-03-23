@@ -1,5 +1,6 @@
 #include <JuceHeader.h>
 #include "EditorUtils.h"
+#include "juce_graphics/juce_graphics.h"
 
 // Decibels
 const UtilRange GainRange {-40.f, 6.f, 0.1f};
@@ -25,6 +26,7 @@ UtilResult GainSlider::setupGainSlider(juce::AudioProcessorEditor *editor) {
 	this->setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxAbove, false, 90, 0);
 	this->setTextValueSuffix(" dB");
 	this->setPopupDisplayEnabled(true, false, editor);
+	this->setSkewFactor(2.f);
 	return OK;
 }
 
@@ -34,6 +36,7 @@ UtilResult TimeSlider::setupTimeSlider(juce::AudioProcessorEditor *editor) {
 	this->setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxAbove, false, 90, 0);
 	this->setTextValueSuffix(" ms");
 	this->setPopupDisplayEnabled(true, false, editor);
+	this->setSkewFactorFromMidPoint(200.f);
 	return OK;
 }
 

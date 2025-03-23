@@ -18,7 +18,7 @@ VstpluginbaseAudioProcessorEditor::VstpluginbaseAudioProcessorEditor(Vstpluginba
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    setSize(400, 300);
+    setSize(600, 300);
 	
 	// Set default values for editor controls
 	inputGainSlider.setValue(0.f);
@@ -47,6 +47,7 @@ void VstpluginbaseAudioProcessorEditor::paint(juce::Graphics& g) {
 	const int W = getWidth();
 	const int H = getHeight();
 	const int W_SLIDER = 40;
+	const int W_TEXT = 40;
 	const int PAD = 30;
 
     // (Our component is opaque, so we must completely fill the background with a solid colour)
@@ -59,9 +60,11 @@ void VstpluginbaseAudioProcessorEditor::paint(juce::Graphics& g) {
 
 	// Control titles
 	g.setFont(10.5f);
-	g.drawFittedText("Input Gain", PAD, PAD, W_SLIDER, PAD, juce::Justification::centred, 1);
-
-
+	g.drawFittedText("Input", PAD, PAD, W_TEXT, PAD, juce::Justification::centred, 1);
+	g.drawFittedText("Attack", (PAD << 1) + W_SLIDER, PAD, W_TEXT, PAD, juce::Justification::centred, 1);
+	g.drawFittedText("Threshold", PAD + ((W_SLIDER + PAD) << 1), PAD, W_TEXT, PAD, juce::Justification::centred, 1);
+	g.drawFittedText("Release", W - ((W_SLIDER + PAD) << 1), PAD, W_TEXT, PAD, juce::Justification::centred, 1);
+	g.drawFittedText("Output", W - W_SLIDER - PAD, PAD, W_TEXT, PAD, juce::Justification::centred, 1);
 
 
 }
