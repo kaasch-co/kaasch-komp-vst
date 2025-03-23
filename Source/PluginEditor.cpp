@@ -55,16 +55,16 @@ void VstpluginbaseAudioProcessorEditor::resized()
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
 	
-	const int HEIGHT = getHeight();
-	const int WIDTH = getWidth();
-	const int SLIDERWIDTH = 40;
-	const int PADDING = 30;
+	const int H = getHeight();
+	const int W = getWidth();
+	const int W_SLIDER = 40;
+	const int PAD = 30;
 
 	// bitshift by 1 as quick 2x multiplier
-	inputGainSlider.setBounds(PADDING, PADDING, SLIDERWIDTH, HEIGHT - (PADDING << 1));
-	thresholdSlider.setBounds(120, PADDING, SLIDERWIDTH, HEIGHT - (PADDING << 1));
-	outputGainSlider.setBounds(WIDTH - SLIDERWIDTH - PADDING, PADDING, SLIDERWIDTH, HEIGHT - (PADDING << 1));
-	attackTimeSlider.setBounds(80, PADDING, SLIDERWIDTH, HEIGHT - (PADDING << 1));
-	releaseTimeSlider.setBounds(WIDTH - ((SLIDERWIDTH + PADDING) << 1), PADDING, SLIDERWIDTH, HEIGHT - (PADDING << 1));
+	inputGainSlider.setBounds(PAD, PAD, W_SLIDER, H - (PAD << 1));
+	thresholdSlider.setBounds(PAD + 2 * (W_SLIDER + PAD), PAD, W_SLIDER, H - (PAD << 1));
+	outputGainSlider.setBounds(W - W_SLIDER - PAD, PAD, W_SLIDER, H - (PAD << 1));
+	attackTimeSlider.setBounds(PAD * 2 + W_SLIDER, PAD, W_SLIDER, H - (PAD << 1));
+	releaseTimeSlider.setBounds(W - ((W_SLIDER + PAD) << 1), PAD, W_SLIDER, H - (PAD << 1));
 
 }
