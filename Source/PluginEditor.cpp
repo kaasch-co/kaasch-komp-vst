@@ -6,6 +6,7 @@
   ==============================================================================
 */
 
+#include "BinaryData.h"
 #include "PluginProcessor.h"
 #include "juce_audio_processors/juce_audio_processors.h"
 #include "juce_core/juce_core.h"
@@ -37,6 +38,9 @@ VstpluginbaseAudioProcessorEditor::VstpluginbaseAudioProcessorEditor(Vstpluginba
 	attackTimeSlider.addListener(this);
 	releaseTimeSlider.addListener(this);
 
+	// setup background image
+	backgroundImage = juce::ImageCache::getFromMemory(BinaryData::background_png, BinaryData::background_pngSize);
+
 	// make editor controls visible
 	addAndMakeVisible(inputGainSlider);
 	addAndMakeVisible(thresholdSlider);
@@ -61,6 +65,7 @@ void VstpluginbaseAudioProcessorEditor::paint(juce::Graphics& g) {
 
     // (Our component is opaque, so we must completely fill the background with a solid colour)
     g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
+	g.drawImage(backgroundImage, 0, 0, W, H, 0, 0, backgroundImage.getWidth(), backgroundImage.getHeight());
 
 	// Title
     g.setFont(12.0f);

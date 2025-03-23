@@ -11,6 +11,7 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 #include "EditorUtils.h"
+#include "juce_graphics/juce_graphics.h"
 #include "juce_gui_basics/juce_gui_basics.h"
 
 //==============================================================================
@@ -28,16 +29,12 @@ public:
 
 private:
 	void sliderValueChanged(juce::Slider* slider) override;
+
+	juce::Image backgroundImage;
+
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     VstpluginbaseAudioProcessor& audioProcessor;
-	/* controls for compressor
-	juce::Slider inputGainSlider;
-	juce::Slider attackTimeSlider;
-	juce::Slider releaseTimeSlider;
-	juce::Slider thresholdSlider;
-	juce::Slider outputGainSlider;
-	*/
 
 	GainSlider inputGainSlider{this};
 	GainSlider thresholdSlider{this};
