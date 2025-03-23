@@ -29,6 +29,7 @@ VstpluginbaseAudioProcessorEditor::VstpluginbaseAudioProcessorEditor(Vstpluginba
 	attackTimeSlider.setValue(20.f);
 	releaseTimeSlider.setValue(80.f);
 
+	// add listeners to the controls
 	inputGainSlider.addListener(this);
 
 	// make editor controls visible

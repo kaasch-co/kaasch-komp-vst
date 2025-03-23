@@ -1,5 +1,7 @@
 #include <JuceHeader.h>
 #include "EditorUtils.h"
+#include <cmath>
+#include <math.h>
 
 // Decibels
 const UtilRange GainRange {-40.f, 6.f, 0.1f};
@@ -13,12 +15,6 @@ GainSlider::GainSlider(juce::AudioProcessorEditor* editor) : range(GainRange) {
 
 GainSlider::~GainSlider() {};
 
-TimeSlider::TimeSlider(juce::AudioProcessorEditor* editor) : range(TimeRange) {
-	setupTimeSlider(editor);
-}
-
-TimeSlider::~TimeSlider() {};
-
 UtilResult GainSlider::setupGainSlider(juce::AudioProcessorEditor *editor) {
 	this->setSliderStyle(juce::Slider::LinearBarVertical);
 	this->setRange(range.FLOOR, range.CEIL, range.STEP);
@@ -29,6 +25,15 @@ UtilResult GainSlider::setupGainSlider(juce::AudioProcessorEditor *editor) {
 	return OK;
 }
 
+float GainSlider::dbFStoFloat(float decibels) {
+	return std::pow(10, decibels/20);
+}
+
+TimeSlider::TimeSlider(juce::AudioProcessorEditor* editor) : range(TimeRange) {
+	setupTimeSlider(editor);
+}
+
+TimeSlider::~TimeSlider() {};
 UtilResult TimeSlider::setupTimeSlider(juce::AudioProcessorEditor *editor) {
 	this->setSliderStyle(juce::Slider::LinearBarVertical);
 	this->setRange(range.FLOOR, range.CEIL, range.STEP);
@@ -38,5 +43,6 @@ UtilResult TimeSlider::setupTimeSlider(juce::AudioProcessorEditor *editor) {
 	this->setSkewFactorFromMidPoint(200.f);
 	return OK;
 }
+
 
 
