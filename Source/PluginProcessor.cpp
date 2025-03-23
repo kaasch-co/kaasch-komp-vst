@@ -155,11 +155,12 @@ void VstpluginbaseAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer
     {
         auto* channelData = buffer.getWritePointer (channel);
 
+		// For each sample of the channel buffer
 		for (int sample = 0; sample < bufferSize; ++sample) {
-			channelData[sample] *= inputGainValue; // FIX!!!
-		}
 
-        // ..do something to the data...
+			// First apply the input gain factor
+			channelData[sample] *= inputGainValue;
+		}
     }
 }
 

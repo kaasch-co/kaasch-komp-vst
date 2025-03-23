@@ -16,10 +16,10 @@ class GainSlider : public juce::Slider {
 	public:
 		GainSlider(juce::AudioProcessorEditor*);
 		~GainSlider();
+		float dbFStoFloat();
 	private:
 		const UtilRange range;
 		UtilResult setupGainSlider(juce::AudioProcessorEditor*);
-		float dbFStoFloat();
 };
 
 class TimeSlider : public juce::Slider {

@@ -90,5 +90,7 @@ void VstpluginbaseAudioProcessorEditor::resized() {
 }
 
 void VstpluginbaseAudioProcessorEditor::sliderValueChanged(juce::Slider* slider) {
-	audioProcessor.inputGainValue = inputGainSlider.getValue();
+	// Convert between physical and digital units, so the audioprocessor only
+	// implements the correct unit
+	audioProcessor.inputGainValue = inputGainSlider.dbFStoFloat();
 }
