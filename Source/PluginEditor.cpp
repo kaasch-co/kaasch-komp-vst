@@ -46,25 +46,27 @@ void VstpluginbaseAudioProcessorEditor::paint(juce::Graphics& g) {
 
 	const int W = getWidth();
 	const int H = getHeight();
+	const int W_SLIDER = 40;
 	const int PAD = 30;
 
     // (Our component is opaque, so we must completely fill the background with a solid colour)
     g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
     g.setColour(juce::Colours::white);
+
+	// Title
     g.setFont(12.0f);
-    g.drawFittedText(
-		"KAASCH Kompressor",
-		0,
-		0,
-		W,
-		H,
-		juce::Justification::centredTop,
-		1
-	);
+    g.drawFittedText("KAASCH Kompressor", 0, 0, W, PAD, juce::Justification::centred, 1);
+
+	// Control titles
+	g.setFont(10.5f);
+	g.drawFittedText("Input Gain", PAD, PAD, W_SLIDER, PAD, juce::Justification::centred, 1);
+
+
+
+
 }
 
-void VstpluginbaseAudioProcessorEditor::resized()
-{
+void VstpluginbaseAudioProcessorEditor::resized() {
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
 	
@@ -73,11 +75,9 @@ void VstpluginbaseAudioProcessorEditor::resized()
 	const int W_SLIDER = 40;
 	const int PAD = 30;
 
-	// bitshift by 1 as quick 2x multiplier
-	inputGainSlider.setBounds(PAD, PAD << 1, W_SLIDER, H - (PAD << 1));
-	thresholdSlider.setBounds(PAD + 2 * (W_SLIDER + PAD), PAD << 1, W_SLIDER, H - (PAD << 1));
-	outputGainSlider.setBounds(W - W_SLIDER - PAD, PAD << 1, W_SLIDER, H - (PAD << 1));
-	attackTimeSlider.setBounds(PAD * 2 + W_SLIDER, PAD << 1, W_SLIDER, H - (PAD << 1));
-	releaseTimeSlider.setBounds(W - ((W_SLIDER + PAD) << 1), PAD << 1, W_SLIDER, H - (PAD << 1));
-
+	inputGainSlider.setBounds(PAD, PAD << 1, W_SLIDER, H - 3 * PAD);
+	thresholdSlider.setBounds(PAD + 2 * (W_SLIDER + PAD), PAD << 1, W_SLIDER, H - 3 * PAD);
+	outputGainSlider.setBounds(W - W_SLIDER - PAD, PAD << 1, W_SLIDER, H - 3 * PAD);
+	attackTimeSlider.setBounds(PAD * 2 + W_SLIDER, PAD << 1, W_SLIDER, H - 3 * PAD);
+	releaseTimeSlider.setBounds(W - ((W_SLIDER + PAD) << 1), PAD << 1, W_SLIDER, H - 3 * PAD);
 }
