@@ -7,6 +7,7 @@
 */
 
 #include "PluginProcessor.h"
+#include "juce_audio_processors/juce_audio_processors.h"
 #include "juce_core/juce_core.h"
 #include "juce_graphics/juce_graphics.h"
 #include "juce_gui_basics/juce_gui_basics.h"
@@ -21,7 +22,7 @@ VstpluginbaseAudioProcessorEditor::VstpluginbaseAudioProcessorEditor(Vstpluginba
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     setSize(600, 300);
-	
+
 	// Set default values for editor controls
 	inputGainSlider.setValue(0.f);
 	thresholdSlider.setValue(0.f);
@@ -74,6 +75,8 @@ void VstpluginbaseAudioProcessorEditor::paint(juce::Graphics& g) {
 	g.drawFittedText("Release", W - ((W_SLIDER + PAD) << 1), PAD, W_TEXT, PAD, juce::Justification::centred, 1);
 	g.drawFittedText("Output", W - W_SLIDER - PAD, PAD, W_TEXT, PAD, juce::Justification::centred, 1);
 
+	g.drawRect(PAD + 3 * (W_SLIDER + PAD), PAD << 1, W_SLIDER, H - 3 * PAD);
+	g.drawRect(PAD + 3 * (W_SLIDER + PAD) + 4, (PAD << 1) + 4, W_SLIDER - 8, H - 4 - 3 * PAD);
 
 }
 
@@ -100,5 +103,7 @@ void VstpluginbaseAudioProcessorEditor::sliderValueChanged(juce::Slider* slider)
 	// If statements to only update the values of sliders that have changed
 	if (slider == &inputGainSlider) {
 		audioProcessor.inputGainValue = inputGainSlider.dbFStoFloat();
+		audioProcessor.thresholdValue = thresholdSlider.dbFStoFloat();
+		audioProcessor.outputGainValue = outputGainSlider.dbFStoFloat();
 	}
 }

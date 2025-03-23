@@ -1,5 +1,6 @@
 #include <JuceHeader.h>
 #include "EditorUtils.h"
+#include "juce_gui_basics/juce_gui_basics.h"
 #include <cmath>
 #include <math.h>
 
@@ -45,4 +46,8 @@ UtilResult TimeSlider::setupTimeSlider(juce::AudioProcessorEditor *editor) {
 }
 
 
+DecibelMeter::DecibelMeter() : range(GainRange) {
+};
+
+DecibelMeter::~DecibelMeter() {};
 

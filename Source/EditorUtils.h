@@ -1,4 +1,5 @@
 #pragma once
+#include "juce_gui_basics/juce_gui_basics.h"
 #include <JuceHeader.h>
 
 typedef struct _UtilRange {
@@ -31,4 +32,12 @@ class TimeSlider : public juce::Slider {
 		UtilResult setupTimeSlider(juce::AudioProcessorEditor*);
 };
 
+class DecibelMeter : juce::Drawable {
+	public:
+		DecibelMeter();
+		~DecibelMeter();
 
+	private:
+		const UtilRange range;
+		float value;
+};

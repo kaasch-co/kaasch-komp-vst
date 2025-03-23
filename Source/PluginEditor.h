@@ -11,6 +11,7 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 #include "EditorUtils.h"
+#include "juce_gui_basics/juce_gui_basics.h"
 
 //==============================================================================
 /**
@@ -41,7 +42,6 @@ private:
 	GainSlider inputGainSlider{this};
 	GainSlider thresholdSlider{this};
 	GainSlider outputGainSlider{this};
-
 	TimeSlider attackTimeSlider{this};
 	TimeSlider releaseTimeSlider{this};
 
