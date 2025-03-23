@@ -25,8 +25,8 @@ UtilResult GainSlider::setupGainSlider(juce::AudioProcessorEditor *editor) {
 	return OK;
 }
 
-float GainSlider::dbFStoFloat(float decibels) {
-	return std::pow(10, decibels/20);
+float GainSlider::dbFStoFloat() {
+	return std::pow(10, this->getValue()/20);
 }
 
 TimeSlider::TimeSlider(juce::AudioProcessorEditor* editor) : range(TimeRange) {
