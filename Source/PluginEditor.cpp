@@ -61,10 +61,10 @@ void VstpluginbaseAudioProcessorEditor::paint(juce::Graphics& g) {
 
     // (Our component is opaque, so we must completely fill the background with a solid colour)
     g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
-    g.setColour(juce::Colours::white);
 
 	// Title
     g.setFont(12.0f);
+	g.setColour(juce::Colours::white);
     g.drawFittedText("KAASCH Kompressor", 0, 0, W, PAD, juce::Justification::centred, 1);
 
 	// Control titles
@@ -75,6 +75,7 @@ void VstpluginbaseAudioProcessorEditor::paint(juce::Graphics& g) {
 	g.drawFittedText("Release", W - ((W_SLIDER + PAD) << 1), PAD, W_TEXT, PAD, juce::Justification::centred, 1);
 	g.drawFittedText("Output", W - W_SLIDER - PAD, PAD, W_TEXT, PAD, juce::Justification::centred, 1);
 
+	// Gain meter
 	g.drawRect(PAD + 3 * (W_SLIDER + PAD), PAD << 1, W_SLIDER, H - 3 * PAD);
 	g.drawRect(PAD + 3 * (W_SLIDER + PAD) + 4, (PAD << 1) + 4, W_SLIDER - 8, H - 4 - 3 * PAD);
 
@@ -103,7 +104,14 @@ void VstpluginbaseAudioProcessorEditor::sliderValueChanged(juce::Slider* slider)
 	// If statements to only update the values of sliders that have changed
 	if (slider == &inputGainSlider) {
 		audioProcessor.inputGainValue = inputGainSlider.dbFStoFloat();
+	}
+	
+	if (slider == &thresholdSlider) {
 		audioProcessor.thresholdValue = thresholdSlider.dbFStoFloat();
+	}
+
+	if (slider == &outputGainSlider) {
 		audioProcessor.outputGainValue = outputGainSlider.dbFStoFloat();
 	}
+
 }
