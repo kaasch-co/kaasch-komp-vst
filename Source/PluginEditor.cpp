@@ -31,13 +31,6 @@ VstpluginbaseAudioProcessorEditor::VstpluginbaseAudioProcessorEditor(Vstpluginba
 	attackTimeSlider.setValue(20.f);
 	releaseTimeSlider.setValue(80.f);
 
-	// add listeners to the controls
-	inputGainSlider.addListener(this);
-	thresholdSlider.addListener(this);
-	outputGainSlider.addListener(this);
-	attackTimeSlider.addListener(this);
-	releaseTimeSlider.addListener(this);
-
 	// setup background image
 	backgroundImage = juce::ImageCache::getFromMemory(BinaryData::background_png, BinaryData::background_pngSize);
 
@@ -47,7 +40,17 @@ VstpluginbaseAudioProcessorEditor::VstpluginbaseAudioProcessorEditor(Vstpluginba
 	addAndMakeVisible(outputGainSlider);
 	addAndMakeVisible(attackTimeSlider);
 	addAndMakeVisible(releaseTimeSlider); 
+	
+	// add listeners to the controls
+	inputGainSlider.addListener(this);
+	thresholdSlider.addListener(this);
+	outputGainSlider.addListener(this);
+	attackTimeSlider.addListener(this);
+	releaseTimeSlider.addListener(this);	
 
+	// Set proper colors for controls
+	getLookAndFeel().setColour(juce::Slider::ColourIds::textBoxOutlineColourId, juce::Colours::white);
+	getLookAndFeel().setColour(juce::Slider::ColourIds::textBoxBackgroundColourId, juce::Colour(137, 200, 204));
 }
 
 VstpluginbaseAudioProcessorEditor::~VstpluginbaseAudioProcessorEditor()
@@ -67,22 +70,18 @@ void VstpluginbaseAudioProcessorEditor::paint(juce::Graphics& g) {
     g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
 	g.drawImage(backgroundImage, 0, 0, W, H, 0, 0, backgroundImage.getWidth(), backgroundImage.getHeight());
 
-	// Title
-    g.setFont(12.0f);
-	g.setColour(juce::Colours::white);
-    g.drawFittedText("KAASCH Kompressor", 0, 0, W, PAD, juce::Justification::centred, 1);
-
 	// Control titles
 	g.setFont(10.5f);
-	g.drawFittedText("Input", PAD, PAD, W_TEXT, PAD, juce::Justification::centred, 1);
-	g.drawFittedText("Attack", (PAD << 1) + W_SLIDER, PAD, W_TEXT, PAD, juce::Justification::centred, 1);
-	g.drawFittedText("Threshold", PAD + ((W_SLIDER + PAD) << 1), PAD, W_TEXT, PAD, juce::Justification::centred, 1);
-	g.drawFittedText("Release", W - ((W_SLIDER + PAD) << 1), PAD, W_TEXT, PAD, juce::Justification::centred, 1);
-	g.drawFittedText("Output", W - W_SLIDER - PAD, PAD, W_TEXT, PAD, juce::Justification::centred, 1);
+	g.setColour(juce::Colours::white);
+	g.drawFittedText("Input", PAD, PAD << 1, W_TEXT, PAD, juce::Justification::centred, 1);
+	g.drawFittedText("Attack", (PAD << 1) + W_SLIDER, PAD << 1, W_TEXT, PAD, juce::Justification::centred, 1);
+	g.drawFittedText("Threshold", PAD + ((W_SLIDER + PAD) << 1), PAD << 1, W_TEXT, PAD, juce::Justification::centred, 1);
+	g.drawFittedText("Release", W - ((W_SLIDER + PAD) << 1), PAD << 1, W_TEXT, PAD, juce::Justification::centred, 1);
+	g.drawFittedText("Output", W - W_SLIDER - PAD, PAD << 1, W_TEXT, PAD, juce::Justification::centred, 1);
 
 	// Gain meter
-	g.drawRect(PAD + 3 * (W_SLIDER + PAD), PAD << 1, W_SLIDER, H - 3 * PAD);
-	g.drawRect(PAD + 3 * (W_SLIDER + PAD) + 4, (PAD << 1) + 4, W_SLIDER - 8, H - 4 - 3 * PAD);
+	g.drawRect(PAD + ((W_SLIDER + PAD) << 2), PAD << 1, W_SLIDER, H - (PAD << 2));
+	g.drawRect(PAD + ((W_SLIDER + PAD) << 2) + 4, (PAD << 1) + 4, W_SLIDER - 8, H - 8 - (PAD << 2));
 
 }
 
@@ -95,11 +94,11 @@ void VstpluginbaseAudioProcessorEditor::resized() {
 	const int W_SLIDER = 40;
 	const int PAD = 30;
 
-	inputGainSlider.setBounds(PAD, PAD << 1, W_SLIDER, H - 3 * PAD);
-	thresholdSlider.setBounds(PAD + 2 * (W_SLIDER + PAD), PAD << 1, W_SLIDER, H - 3 * PAD);
-	outputGainSlider.setBounds(W - W_SLIDER - PAD, PAD << 1, W_SLIDER, H - 3 * PAD);
-	attackTimeSlider.setBounds(PAD * 2 + W_SLIDER, PAD << 1, W_SLIDER, H - 3 * PAD);
-	releaseTimeSlider.setBounds(W - ((W_SLIDER + PAD) << 1), PAD << 1, W_SLIDER, H - 3 * PAD);
+	inputGainSlider.setBounds(PAD, PAD * 3, W_SLIDER, H - (PAD << 2));
+	thresholdSlider.setBounds(PAD + 2 * (W_SLIDER + PAD), PAD * 3, W_SLIDER, H - (PAD << 2));
+	outputGainSlider.setBounds(W - W_SLIDER - PAD, PAD * 3, W_SLIDER, H - (PAD << 2));
+	attackTimeSlider.setBounds(PAD * 2 + W_SLIDER, PAD * 3, W_SLIDER, H - (PAD << 2));
+	releaseTimeSlider.setBounds(W - ((W_SLIDER + PAD) << 1), PAD * 3, W_SLIDER, H - (PAD << 2));
 }
 
 void VstpluginbaseAudioProcessorEditor::sliderValueChanged(juce::Slider* slider) {

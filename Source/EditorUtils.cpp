@@ -1,6 +1,8 @@
 #include <JuceHeader.h>
 #include "EditorUtils.h"
+#include "juce_graphics/juce_graphics.h"
 #include "juce_gui_basics/juce_gui_basics.h"
+#include "juce_gui_extra/juce_gui_extra.h"
 #include <cmath>
 #include <math.h>
 
@@ -23,6 +25,8 @@ UtilResult GainSlider::setupGainSlider(juce::AudioProcessorEditor *editor) {
 	this->setTextValueSuffix(" dB");
 	this->setPopupDisplayEnabled(true, false, editor);
 	this->setSkewFactor(2.f);
+	this->setColour(juce::Slider::ColourIds::textBoxOutlineColourId, juce::Colours::white);
+	this->setColour(juce::Slider::ColourIds::trackColourId, juce::Colour(137, 200, 204));
 	return OK;
 }
 
@@ -42,6 +46,8 @@ UtilResult TimeSlider::setupTimeSlider(juce::AudioProcessorEditor *editor) {
 	this->setTextValueSuffix(" ms");
 	this->setPopupDisplayEnabled(true, false, editor);
 	this->setSkewFactorFromMidPoint(200.f);
+	this->setColour(juce::Slider::ColourIds::textBoxOutlineColourId, juce::Colours::white);
+	this->setColour(juce::Slider::ColourIds::trackColourId, juce::Colour(137, 200, 204));
 	return OK;
 }
 
