@@ -8,6 +8,7 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
+#include "pluginterfaces/base/futils.h"
 
 //==============================================================================
 VstpluginbaseAudioProcessor::VstpluginbaseAudioProcessor()
@@ -164,9 +165,12 @@ void VstpluginbaseAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer
 			channelData[sample] *= inputGainValue;
 
 			// compression logic test
+
+			/*	Some weird distortion type shit
 			if (channelData[sample] >= thresholdValue) {
-				channelData[sample] -= channelData[sample] - thresholdValue;
+				channelData[sample] *= 1 - Steinberg::Abs(Steinberg::Abs(channelData[sample]) - thresholdValue);
 			}
+			*/
 
 			// Lastly apply output gain
 			channelData[sample] *= outputGainValue;
