@@ -76,8 +76,11 @@ void VstpluginbaseAudioProcessorEditor::paint(juce::Graphics& g) {
 	g.drawFittedText("Output", W - W_SLIDER - PAD, PAD << 1, W_TEXT, PAD, juce::Justification::centred, 1);
 
 	// Gain meter
-	g.drawRect(PAD + ((W_SLIDER + PAD) << 2), PAD << 1, W_SLIDER, H - (PAD << 2));
-	g.drawRect(PAD + ((W_SLIDER + PAD) << 2) + 4, (PAD << 1) + 4, W_SLIDER - 8, H - 8 - (PAD << 2));
+	g.setColour(juce::Colours::white);
+	g.drawRect(PAD + ((W_SLIDER + PAD) << 2), PAD * 3, W_SLIDER, H - (PAD << 2));
+
+	g.setColour(juce::Colour(137, 200, 204));
+	g.fillRect(PAD + ((W_SLIDER + PAD) << 2) + 4, (PAD * 3) + 4 - H*inputGainSlider.getValue(), W_SLIDER - 8, H - 8 - (PAD << 2));
 
 }
 

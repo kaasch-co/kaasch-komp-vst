@@ -162,6 +162,14 @@ void VstpluginbaseAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer
 
 			// First apply the input gain factor
 			channelData[sample] *= inputGainValue;
+
+			// compression logic test
+			if (channelData[sample] >= thresholdValue) {
+				channelData[sample] -= channelData[sample] - thresholdValue;
+			}
+
+			// Lastly apply output gain
+			channelData[sample] *= outputGainValue;
 		}
     }
 }
