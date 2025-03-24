@@ -47,10 +47,6 @@ VstpluginbaseAudioProcessorEditor::VstpluginbaseAudioProcessorEditor(Vstpluginba
 	outputGainSlider.addListener(this);
 	attackTimeSlider.addListener(this);
 	releaseTimeSlider.addListener(this);	
-
-	// Set proper colors for controls
-	getLookAndFeel().setColour(juce::Slider::ColourIds::textBoxOutlineColourId, juce::Colours::white);
-	getLookAndFeel().setColour(juce::Slider::ColourIds::textBoxBackgroundColourId, juce::Colour(137, 200, 204));
 }
 
 VstpluginbaseAudioProcessorEditor::~VstpluginbaseAudioProcessorEditor()
